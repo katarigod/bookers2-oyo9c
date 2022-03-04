@@ -7,7 +7,7 @@
         <th>Body</th>
       </tr>
     
-      <%= @books.each do |book| %>
+      <% @books.each do |book| %>
         <tr>
           <td><%= book.title %></td>
           <td><%= book.body %></td>
@@ -16,16 +16,24 @@
     </thead>
   </table>
   <h2>New book</h2>
-  <%= form_with model: @book do |f| %>
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this book from being saved:
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= form_with model: @book, url: '/books', method: :post do |f| %>
     <div class="field">
-      <h4 class="new">Title</h4>
+      <p class="new">Title</p>
       <%= f.text_field :title %>
     </div>
 	  <div class="field">
-      <h4 class="new">Body</h4>
+      <p class="new">Body</p>
       <%= f.text_area :body %>
-    </div
-	
-  <%= f.submit 'Create Book' %>
-<% end %>
+    </div>
+    <%= f.submit 'Create Book', :class=>"input" %>
+  <% end %>
 </body>

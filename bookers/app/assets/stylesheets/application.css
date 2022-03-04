@@ -22,11 +22,12 @@
 body{
   background-color:#fff;
   color:#333;
-  font-family:
-  verdana, arial, helvetica, sans-serif;font-size:13px;line-height:18px;
+  font-family:verdana, arial, helvetica, sans-serif;
+  font-size:13px;
+  line-height:18px;
   margin:33px;
 }
-p,.start/*,ol,ul*/,td{
+.top,.start/*,ol,ul*/,td{
   font-family:verdana, arial, helvetica, sans-serif;
   font-size:13px;
   line-height:18px;
@@ -139,4 +140,22 @@ h2 {
 .new{
   display: block;
   cursor: default;
+}
+
+div.field {
+    margin-bottom: 10px;
+}
+
+.input {
+    appearance: auto;
+    user-select: none;
+    white-space: pre;
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    box-sizing: border-box;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-image: initial;
 }
