@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+      <span class="notice notice-<%= key %>">
+      <%= value %>
+      </span>
+    <% end %>
     <%= yield %>
   </body>
 </html>
