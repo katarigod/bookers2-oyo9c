@@ -5,9 +5,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    
-    
-    
+    @today_book = @books.created_today
+    @yesterday_book = @books.created_yesterday
+    @weekago_book = @books.created_weekago
+    @twoweekago_book = @books.created_twoweekago
+
+
   end
 
   def index
@@ -30,8 +33,8 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
-  
+
+
 
   private
 
