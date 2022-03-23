@@ -10,6 +10,15 @@
           <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
         <% end %>
       <% end %>
+
+
+      <% unless user.id == current_user.id %>
+        <% if (current_user.following?(user)) && (user.following?(current_user)) %>
+          <%= link_to 'Begin Chat', message_path(user.id) %>
+        <% end %>
+      <% end %>
+
+
     </th>
   </tr>
   <tr>

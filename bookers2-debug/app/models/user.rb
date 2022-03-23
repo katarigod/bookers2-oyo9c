@@ -12,8 +12,11 @@ class User < ApplicationRecord
 
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   has_many :favorited_books, through: :favorites, source: :books
+
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
 
 
@@ -39,6 +42,11 @@ class User < ApplicationRecord
 
   def following?(user)
     followings.include?(user)
+  end
+
+  def followed_by?(user)
+    # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
+    relationships.find_by(follower_id: user.id).present?
   end
 
   def self.looks(search, word)

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'messages/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: "homes#top"
@@ -17,5 +18,8 @@ Rails.application.routes.draw do
 
   get "search" => "searches#search"
 
+  resources :messages, only: [:create]
+  get 'message/:id', to: 'messages#show', as: 'message'
+  resources :rooms, only: [:create, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
