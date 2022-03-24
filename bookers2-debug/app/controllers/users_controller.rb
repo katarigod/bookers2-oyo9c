@@ -9,6 +9,19 @@ class UsersController < ApplicationController
     @yesterday_book = @books.created_yesterday
     @weekago_book = @books.created_weekago
     @twoweekago_book = @books.created_twoweekago
+    @twoday_book = @books.created_twoday
+    @threeday_book = @books.created_threeday
+    @fourday_book = @books.created_fourday
+    @fiveday_book = @books.created_fiveday
+    @sixday_book = @books.created_sixday
+
+    @week = @sixday_book, @fiveday_book, @fourday_book, @threeday_book, @twoday_book, @yesterday_book, @twoday_book
+    @week_labels = "6日前", "5日前", "4日前", "3日前", "2日前", "1日前", "今日"
+
+    # @book_by_day = @books.group_by_day(:created_at).size
+    # @chartlabels = @book_by_day.map(&:first).to_json.html_safe
+    # @chartdatas = @book_by_day.map(&:second)
+
 
 
   end
