@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'message/:id', to: 'messages#show', as: 'message'
   resources :rooms, only: [:create, :show]
 
-  resources :groups,only: [:index, :show, :edit, :create, :update, :new, :show]
+  resources :groups do
+    get "join" => "groups#join"
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
