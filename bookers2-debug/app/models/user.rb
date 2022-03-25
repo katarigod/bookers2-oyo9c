@@ -21,6 +21,7 @@ class User < ApplicationRecord
 
   has_many :group_users   #ここ！
   has_many :groups, through: :group_users
+  # has_many :owned_groups, class_name: "Group"
 
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
